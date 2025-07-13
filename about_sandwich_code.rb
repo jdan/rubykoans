@@ -14,7 +14,7 @@ class AboutSandwichCode < Neo::Koan
   end
 
   def test_counting_lines
-    assert_equal __, count_lines("example_file.txt")
+    assert_equal 4, count_lines("example_file.txt")
   end
 
   # ------------------------------------------------------------------
@@ -29,7 +29,8 @@ class AboutSandwichCode < Neo::Koan
   end
 
   def test_finding_lines
-    assert_equal __, find_line("example_file.txt")
+    assert_equal "test\n", find_line("example_file.txt")
+    # NOTE(jdan): `file.gets` has the endline
   end
 
   # ------------------------------------------------------------------
@@ -74,33 +75,34 @@ class AboutSandwichCode < Neo::Koan
   end
 
   def test_counting_lines2
-    assert_equal __, count_lines2("example_file.txt")
+    assert_equal 4, count_lines2("example_file.txt")
+    # NOTE(jdan): Oh nice blocks (and callbacks) are the
+    # solution to this problem
   end
 
   # ------------------------------------------------------------------
 
   def find_line2(file_name)
     # Rewrite find_line using the file_sandwich library function.
+    file_sandwich(file_name) do |file|
+      file.find { |line| /e/.match(line) }
+    end
   end
 
   def test_finding_lines2
-    assert_equal __, find_line2("example_file.txt")
+    assert_equal "test\n", find_line2("example_file.txt")
   end
 
   # ------------------------------------------------------------------
 
   def count_lines3(file_name)
-    open(file_name) do |file|
-      count = 0
-      while file.gets
-        count += 1
-      end
-      count
+    file_sandwich(file_name) do |file|
+      file.count
     end
   end
 
   def test_open_handles_the_file_sandwich_when_given_a_block
-    assert_equal __, count_lines3("example_file.txt")
+    assert_equal 4, count_lines3("example_file.txt")
   end
 
 end
