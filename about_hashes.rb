@@ -79,7 +79,7 @@ class AboutHashes < Neo::Koan
     expected = { "jim" => 54, "amy" => 20, "dan" => 23, "jenny" => 26 }
     assert_equal true, expected == new_hash
 
-    # NOTE(jordan): .merge will override existing values
+    # NOTE(jdan): .merge will override existing values
   end
 
   def test_default_value

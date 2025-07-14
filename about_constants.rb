@@ -91,6 +91,6 @@ class AboutConstants < Neo::Koan
   # scope, or the constant from the inheritance hierarchy?  Why is it
   # different than the previous answer?
 
-  # NOTE(jordan): There is no lexical constant, and MyAnimals::Oyster
+  # NOTE(jdan): There is no lexical constant, and MyAnimals::Oyster
   # doesn't have a LEGS, so it looks to Animal
 end

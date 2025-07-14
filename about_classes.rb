@@ -92,7 +92,7 @@ class AboutClasses < Neo::Koan
     fido.set_name("Fido")
 
     assert_equal "Fido", fido.name
-    # TODO(jordan): attr_reader is where it's at
+    # TODO(jdan): attr_reader is where it's at
   end
 
   # ------------------------------------------------------------------
@@ -165,7 +165,7 @@ class AboutClasses < Neo::Koan
 
     fidos_self = fido.get_self
     assert_equal fido, fidos_self
-    # NOTE(jordan): Uhhhh sure?
+    # NOTE(jdan): Uhhhh sure?
   end
 
   def test_to_s_provides_a_string_version_of_the_object
@@ -191,7 +191,7 @@ class AboutClasses < Neo::Koan
 
     assert_equal "STRING", "STRING".to_s
     assert_equal '"STRING"', "STRING".inspect
-    # NOTE(jordan): .inspect is kinda like JSON.stringify
+    # NOTE(jdan): .inspect is kinda like JSON.stringify
   end
 
 end

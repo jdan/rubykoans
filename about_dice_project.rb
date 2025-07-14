@@ -6,6 +6,20 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #   code ...
 # end
 
+class DiceSet
+  attr_reader :values
+  
+  def initialize
+    @values = []
+  end
+  
+  def roll(n)
+    @values = 1.upto(n).map { 
+      1.upto(6).to_a.sample
+    }
+  end
+end
+
 class AboutDiceProject < Neo::Koan
   def test_can_create_a_dice_set
     dice = DiceSet.new
@@ -48,6 +62,9 @@ class AboutDiceProject < Neo::Koan
     # If the rolls are random, then it is possible (although not
     # likely) that two consecutive rolls are equal.  What would be a
     # better way to test this?
+    #
+    # NOTE(jdan): We could implement a seed and pass it to our sample
+    # calls.
   end
 
   def test_you_can_roll_different_numbers_of_dice

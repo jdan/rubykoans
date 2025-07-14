@@ -43,6 +43,6 @@ class AboutOpenClasses < Neo::Koan
   # NOTE: To understand why we need the :: before Integer, you need to
   # become enlightened about scope.
   #
-  # NOTE(jordan): Well, I need to reopen the ROOT Integer class, not
+  # NOTE(jdan): Well, I need to reopen the ROOT Integer class, not
   # the one defined in AboutOpenClasses
 end
