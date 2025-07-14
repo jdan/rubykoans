@@ -30,7 +30,24 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
-  # You need to write this method
+  freq = dice.group_by { |n| n }
+  1.upto(6) { |n| freq[n] = (freq[n] || []).count }
+
+  if freq[1] >= 3
+    ones_left = [0, freq[1] - 3].max
+    1000 + 100 * ones_left + 50 * freq[5]
+  elsif freq[5] >= 3
+    fives_left = [0, freq[5] - 3].max
+    500 + 100 * freq[1] + 50 * fives_left
+  else
+    [2, 3, 4, 6].each do |n|
+      if freq[n] >= 3
+        return n * 100 + 100 * freq[1] + 50 * freq[5]
+      end
+    end
+
+    100 * freq[1] + 50 * freq[5]
+  end
 end
 
 class AboutScoringProject < Neo::Koan
